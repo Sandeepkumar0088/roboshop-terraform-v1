@@ -14,5 +14,5 @@ resource "aws_route53_record" "frontend" {
 
   records = [aws_instance.frontend.private_ip]
 
-  depends_on = [aws_instance.web]
+  depends_on = [aws_instance.frontend]
 }
