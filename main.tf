@@ -32,3 +32,20 @@ resource "aws_route53_record" "mongodb" {
   records = [aws_instance.mongodb.private_ip]
 }
 
+resource "aws_instance" "catalogue" {
+    ami = "ami-09c813fb71547fc4f"
+    instance_type = "t3.micro"
+    tags = {
+    Name = "catalogue"
+    }
+}
+
+resource "aws_route53_record" "catalogue" {
+  zone_id = "Z09354891N46GVLJSDZH0"
+  name    = "catalogue-dev"
+  type    = "A"
+  ttl     = 30
+
+  records = [aws_instance.catalogue.private_ip]
+}
+
