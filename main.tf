@@ -6,13 +6,13 @@ resource "aws_instance" "frontend" {
     }
 }
 
-resource "aws_route53_record" "frontend-record" {
+resource "aws_route53_record" "frontend" {
   zone_id = "Z09354891N46GVLJSDZH0"
   name    = "frontend-dev"
   type    = "A"
   ttl     = 30
 
-  records = [aws_instance.frontend-record.private_ip]
+  records = [aws_instance.frontend.private_ip]
 }
 
 resource "aws_instance" "mongodb" {
@@ -23,12 +23,12 @@ resource "aws_instance" "mongodb" {
     }
 }
 
-resource "aws_route53_record" "mongodb-record" {
+resource "aws_route53_record" "mongodb" {
   zone_id = "Z09354891N46GVLJSDZH0"
   name    = "mongodb-dev"
   type    = "A"
   ttl     = 30
 
-  records = [aws_instance.mongodb-record.private_ip]
+  records = [aws_instance.mongodb.private_ip]
 }
 
