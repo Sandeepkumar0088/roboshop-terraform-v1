@@ -12,7 +12,7 @@ resource "aws_route53_record" "frontend" {
   type    = "A"
   ttl     = 30
 
-  records = [aws_instance.web.private_ip]
+  records = [aws_instance.frontend.private_ip]
 
   depends_on = [aws_instance.web]
 }
