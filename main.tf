@@ -1,7 +1,7 @@
 resource "aws_instance" "frontend" {
     ami = "ami-09c813fb71547fc4f"
     instance_type = "t3.micro"
-    vpc_security_groups_ids= [ "sg-039df2e97e51ebc17" ]
+    vpc_security_group_ids= [ "sg-039df2e97e51ebc17" ]
     tags = {
     Name = "frontend"
     }
@@ -19,7 +19,7 @@ resource "aws_route53_record" "frontend" {
 resource "aws_instance" "mongodb" {
     ami = "ami-09c813fb71547fc4f"
     instance_type = "t3.micro"
-    vpc_security_groups_ids= [ "sg-039df2e97e51ebc17" ]
+    vpc_security_group_ids= [ "sg-039df2e97e51ebc17" ]
     tags = {
     Name = "mongodb"
     }
@@ -37,7 +37,7 @@ resource "aws_route53_record" "mongodb" {
 resource "aws_instance" "catalogue" {
     ami = "ami-09c813fb71547fc4f"
     instance_type = "t3.micro"
-    vpc_security_groups_ids= [ "sg-039df2e97e51ebc17" ]
+    vpc_security_group_ids= [ "sg-039df2e97e51ebc17" ]
     tags = {
     Name = "catalogue"
     }
@@ -46,7 +46,6 @@ resource "aws_instance" "catalogue" {
 resource "aws_route53_record" "catalogue" {
   zone_id = "Z09354891N46GVLJSDZH0"
   name    = "catalogue-dev"
-  vpc_security_groups_ids= [ "sg-039df2e97e51ebc17" ]
   type    = "A"
   ttl     = 30
 
