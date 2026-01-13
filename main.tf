@@ -66,5 +66,5 @@ resource "aws_route53_record" "shipping" {
   name = "shipping-dev"
   ttl = 5
   type = "A"
-  records = [ aws_instance.shipping ]
+  records = [ aws_instance.shipping.private_ip ]
 }
