@@ -10,7 +10,8 @@ resource "aws_instance" "instance" {
 }
 
 resource "aws_route53_record" "dns" {
-  zone_id = ""
+  count   = 2
+  zone_id = "Z09354891N46GVLJSDZH0"
   ttl     = 5
   type    = "A"
   name    = "${var.components[count.index]}-dev"
