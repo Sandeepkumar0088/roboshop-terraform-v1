@@ -1,11 +1,11 @@
 resource "aws_instance" "instance" {
-  count                   = 6
+  count                   = 2
 
-  ami                     = ""
-  instance_type           = ""
-  vpc_security_group_ids  = [""]
+  ami                     = "ami-0220d79f3f480ecf5"
+  instance_type           = "t3.micro"
+  vpc_security_group_ids  = ["sg-080ee07db03cf22ab"]
   tags = {
-    Name = var.components[count.index][key]
+    Name = var.components[count.index]
   }
 }
 
@@ -13,15 +13,14 @@ resource "aws_route53_record" "dns" {
   zone_id = ""
   ttl     = 5
   type    = "A"
-  name    = "${var.components[count.index][value]}-dev"
-  records = [aws_instance.instance[var.components[count.index][key]].private_ip]
+  name    = "${var.components[count.index]}-dev"
+  records = [aws_instance.instance[var.components[count.index]].private_ip]
 }
 
 
 variable components  {
-    default = {
-      black  = "t3.micro"
-      white  = "t3.micro"
-
-      }
+    default = [
+      black,
+      white
+    ]
 }
