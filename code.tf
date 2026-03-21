@@ -1,4 +1,4 @@
-resource "aws_instance" "frontend" {
+resource "aws_instance" "instance" {
   count                   = 6
 
   ami                     = ""
@@ -14,17 +14,14 @@ resource "aws_route53_record" "dns" {
   ttl     = 5
   type    = "A"
   name    = "${var.components[count.index][value]}-dev"
-  records = [aws_instance.frontend.private_ip]
+  records = [aws_instance.instance[var.components[count.index][key]].private_ip]
 }
 
 
 variable components  {
     default = {
-      frontend  = "t3.micro"
-      cart      = "t3.micro"
-      user      = "t3.micro"
-      shipping  = "t3.micro"
-      payment   = "t3.micro"
-      catalogue = "t3.micro"
+      black  = "t3.micro"
+      white  = "t3.micro"
+
       }
 }
