@@ -20,7 +20,7 @@ resource "aws_route53_record" "dns" {
 
 variable components  {
     default = [
-      black,
-      white
+      "black",
+      "white"
     ]
 }
