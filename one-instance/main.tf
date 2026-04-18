@@ -19,7 +19,6 @@ resource "aws_route53_record" "sandeep" {
   records = [aws_instance.sandeep.private_ip]
 }
 
-
 variable "zone_id" {
   default = "Z03369982K8R0OHQ4XJJV"
 }
@@ -35,4 +34,3 @@ variable "instance_type" {
 variable "ami" {
   default = "ami-0220d79f3f480ecf5"
 }
-
