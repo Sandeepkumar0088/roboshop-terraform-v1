@@ -3,20 +3,21 @@ provider "aws" {
 }
 
 resource "aws_instance" "sandeep" {
-  ami = var.ami
-  instance_type = var.instance_type
-  vpc_security_group_ids = ["sg-03dfc56f63b6d06c5"]
+  ami                     = var.ami
+  instance_type           = var.instance_type
+  vpc_security_group_ids  = ["sg-03dfc56f63b6d06c5"]
+
   tags = {
-    Name = "sandeep"
+    Name                  = "sandeep"
   }
 }
 
 resource "aws_route53_record" "sandeep" {
-  zone_id = var.zone_id
-  name    = var.dns_name
-  ttl     = 30
-  type    = A
-  records = [aws_instance.sandeep.private_ip]
+  zone_id                 = var.zone_id
+  name                    = var.dns_name
+  ttl                     = 30
+  type                    = "A"
+  records                 = [aws_instance.sandeep.private_ip]
 }
 
 variable "zone_id" {
